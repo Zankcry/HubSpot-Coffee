@@ -48,6 +48,13 @@
                     <label for="message" class="block text-text text-sm font-bold mb-2">Your Message:</label>
                     <textarea id="message" name="message" rows="6" class="shadow appearance-none border rounded w-full py-3 px-4 bg-primary text-text leading-tight focus:outline-none focus:shadow-outline focus:border-accent" placeholder="Type your message here..." required></textarea>
                 </div>
+                <div data-aos="fade-up">
+                    <label for="marketingChannel" class="block text-text text-sm font-bold mb-2">Choose Marketing Channel:</label>
+                    <select id="marketingChannel" name="marketingChannel" class="shadow appearance-none border rounded w-full py-3 px-4 bg-primary text-text leading-tight focus:outline-none focus:shadow-outline focus:border-accent">
+                        <option value="email">Email</option>
+                        <option value="socialMedia">Social Media</option>
+                    </select>
+                </div>
                 
                 <div class="flex items-center justify-between" data-aos="fade-up">
                     <button type="submit" class="bg-accent text-primary px-6 py-3 rounded-full text-md font-semibold hover:bg-yellow-500 transition duration-300 focus:outline-none focus:shadow-outline">
@@ -78,12 +85,20 @@
             const contact = document.getElementById('contactNumber').value;
             const email = document.getElementById('emailAddress').value;
             const message = document.getElementById('message').value;
+            const marketingChannel = document.getElementById('marketingChannel').value;
 
             console.log("Contact Form Submission:");
             console.log("Name:", name);
             console.log("Contact Number:", contact);
             console.log("Email:", email);
             console.log("Message:", message);
+            console.log("Marketing Channel:", marketingChannel);
+
+            if (marketingChannel === 'email') {
+                window.location.href = 'email_mockup.html';
+            } else if (marketingChannel === 'socialMedia') {
+                window.location.href = 'social_media_mockup.html';
+            }
 
             // Display success message
             const formMessageDiv = document.getElementById('formMessage');
