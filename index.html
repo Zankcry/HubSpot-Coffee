@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hubspot Coffee - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Added styles for Logout Button */
+    #logoutBtn {
+      background-color: #f4c430;
+      color: #3a2c2c;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    #logoutBtn:hover {
+      background-color: #e0b124;
+      transform: scale(1.05);
+    }
+
+    #welcomeMsg {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-right: 1rem;
+    }
+  </style>
+</head>
+
+<body class="bg-primary text-text">
+  <!-- Header -->
+  <header class="bg-secondary p-4 shadow-md">
+    <nav class="container mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold text-accent flex items-center">
+        <img src="assets/logo.jpeg" alt="Hubspot Coffee Logo" class="h-10 rounded-full mr-2">
+        <span class="text-white font-bold px-4 hover:text-accent">Hubspot Coffee</span>
+      </a>
+
+      <ul class="flex space-x-6 items-center">
+        <li><a href="index.html" class="hover:text-accent">Home</a></li>
+        <li><a href="features.html" class="hover:text-accent">Features</a></li>
+        <li><a href="products.html" class="hover:text-accent">Products</a></li>
+        <li><a href="contact.html" class="hover:text-accent">Contact Us</a></li>
+        <li id="welcomeMsg"></li>
+        <li><button id="logoutBtn">Logout</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero bg-cover bg-center h-screen flex items-center justify-center text-center"
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/bg.png');">
+    <div class="p-10 rounded-lg text-white" data-aos="fade-up" data-aos-delay="100">
+      <h1 class="text-5xl font-bold mb-4">Discover Your Perfect Coffee Moment</h1>
+      <p class="text-xl mb-8">From rich espressos to creamy lattes, find your favorite brew and savor the moment.</p>
+      <a href="#menu"
+        class="bg-accent text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-yellow-500 transition duration-300">Explore
+        Our Menu</a>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="container mx-auto py-16 px-4">
+    <div data-aos="fade-up" data-aos-delay="200">
+      <h2 class="text-4xl font-bold text-center mb-10">About Hubspot Coffee</h2>
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-1/2">
+          <img src="assets/interior.png" alt="Coffee Shop Interior" class="rounded-lg shadow-lg">
+        </div>
+        <div class="md:w-1/2">
+          <p class="text-lg leading-relaxed mb-4">Located conveniently in front of Holy Angel University in Angeles,
+            Hubspot Coffee is more than just a coffee shop – it's a community hub. We pride ourselves on serving ethically
+            sourced, high-quality coffee beans, expertly roasted and brewed to perfection.</p>
+          <p class="text-lg leading-relaxed">Our cozy ambiance, friendly baristas, and a wide selection of pastries and
+            snacks make us the ideal spot for studying, meeting friends, or simply enjoying a moment of peace.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Menu Items -->
+  <section id="menu" class="bg-secondary py-16 px-4">
+    <div class="container mx-auto" data-aos="fade-up" data-aos-delay="300">
+      <h2 class="text-4xl font-bold text-center mb-10">Our Signature Delights</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-primary p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="400">
+          <img src="assets/coffee1.png" alt="Espresso" class="mx-auto mb-4 rounded-md">
+          <h3 class="text-2xl font-semibold mb-2">Java Chip</h3>
+          <p class="text-text">A rich blend of coffee, chocolate chips, and milk, topped with ice cream.</p>
+        </div>
+
+        <div class="bg-primary p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="500">
+          <img src="assets/coffee2.png" alt="Latte" class="mx-auto mb-4 rounded-md">
+          <h3 class="text-2xl font-semibold mb-2">Chocolate Cream</h3>
+          <p class="text-text">A decadent blend of rich chocolate and creamy milk, finished with a vanilla ice scream on top.</p>
+        </div>
+
+        <div class="bg-primary p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="600">
+          <img src="assets/coffee3.png" alt="Pastry" class="mx-auto mb-4 rounded-md">
+          <h3 class="text-2xl font-semibold mb-2">Double Strawberry</h3>
+          <p class="text-text">A refreshing blend of real strawberries and creamy milk for a sweet, fruity treat.</p>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="products.html"
+          class="bg-accent text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-yellow-500 transition duration-300">View
+          Full Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container mx-auto py-16 px-4">
+    <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+      <h2 class="text-4xl font-bold text-center mb-10">Get in Touch</h2>
+      <p class="text-lg mb-4">Visit us at: In front of Holy Angel University, Angeles City</p>
+      <p class="text-lg mb-4">Email: coffeehubspot@gmail.com</p>
+      <p class="text-lg">Phone: (123) 456-7890</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-secondary p-8 text-center text-text">
+    <p>&copy; 2025 Hubspot Coffee. All rights reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // 🔒 Login check
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const username = localStorage.getItem("username");
+
+    if (isLoggedIn !== "true") {
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("welcomeMsg").textContent = `Welcome, ${username} ☕`;
+    }
+
+    // 🚪 Logout
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("username");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Marketing Mockup</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body class="text-text flex flex-col min-h-screen bg-primary">
+    <header class="bg-secondary p-4 shadow-md">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-accent flex items-center">
+                <img src="assets/logo.jpeg" alt="Hubspot Coffee Logo" class="h-10 rounded-full mr-2">
+                <span class="text-white font-bold px-4 hover:text-accent">Hubspot Coffee</span>
+            </a>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-accent">Home</a></li>
+                <li><a href="features.html" class="hover:text-accent">Features</a></li>
+                <li><a href="products.html" class="hover:text-accent">Products</a></li>
+                <li><a href="contact.html" class="hover:text-accent">Contact Us</a></li>
+                <li id="welcomeMsg"></li>
+                <li><button id="logoutBtn">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto py-16 px-4">
+        <h1 class="text-5xl font-bold text-center mb-12">Social Media Marketing Mockup</h1>
+        
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Facebook Mockup -->
+            <div class="bg-white p-6 rounded-lg shadow-lg text-gray-800">
+                <h2 class="text-2xl font-bold mb-4 text-blue-700">Facebook Post</h2>
+                <div class="flex items-center mb-4">
+                    <img src="assets/facebook.png" alt="Profile" class="h-8 w-8 rounded-full mr-4">
+                    <div>
+                        <p class="font-semibold">Hubspot Coffee</p>
+                        <p class="text-sm text-gray-600">Just now <span class="ml-2">🌍</span></p>
+                    </div>
+                </div>
+                <p class="mb-4">☕ Good morning, coffee lovers! Start your day right with a freshly brewed cup from Hubspot Coffee. #HubspotCoffee #MorningBoost #CoffeeTime</p>
+                <img src="assets/coffee1.png" alt="Coffee" class="w-full h-48 object-cover rounded-lg mb-4">
+                <div class="flex justify-between text-gray-600 text-sm">
+                    <span>👍 Like</span>
+                    <span>💬 Comment</span>
+                    <span>↩️ Share</span>
+                </div>
+            </div>
+
+            <!-- Instagram Mockup -->
+            <div class="bg-white p-6 rounded-lg shadow-lg text-gray-800">
+                <h2 class="text-2xl font-bold mb-4 text-pink-600">Instagram Post</h2>
+                <div class="flex items-center mb-4">
+                    <img src="assets/social.png" alt="Profile" class="h-8 w-8 rounded-full mr-4">
+                    <div>
+                        <p class="font-semibold">Hubspot Coffee</p>
+                        <p class="text-sm text-gray-600">15m</p>
+                    </div>
+                </div>
+                
+                <img src="assets/coffee2.png" alt="Coffee" class="w-full h-64 object-cover rounded-lg mb-4">
+                <p class="mb-2"><span class="font-semibold">hubspotcoffee</span> That perfect pour! ☕✨ Enjoy the rich aroma and exquisite taste. #CoffeeArt #LatteLove #HubspotCoffee</p>
+                <p class="text-sm text-gray-600">View all 15 comments</p>
+            </div>
+
+            <!-- X (Twitter) Mockup -->
+            <div class="bg-white p-6 rounded-lg shadow-lg text-gray-800">
+                <h2 class="text-2xl font-bold mb-4 text-blue-400">X (Twitter) Post</h2>
+                <div class="flex items-center mb-4">
+                    <img src="assets/twitter.png" alt="Profile" class="h-8 w-8 rounded-full mr-4">
+                    <div>
+                        <p class="font-semibold">Hubspot Coffee <span class="text-gray-600">@HubspotCoffee</span></p>
+                        <p class="text-sm text-gray-600">1h</p>
+                    </div>
+                </div>
+                <p class="mb-4">Fueling your day, one cup at a time! 🚀 Get your favorite brew from Hubspot Coffee. #CoffeeFuel #WorkFromHome #Hubspot</p>
+                <div class="flex justify-between text-gray-600 text-sm mt-4">
+                    <span>💬</span>
+                    <span>🔁</span>
+                    <span>❤️</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-secondary p-8 text-center text-text mt-auto">
+        <p>&copy; 2025 Hubspot Coffee. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+<style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Added styles for Logout Button */
+    #logoutBtn {
+      background-color: #f4c430;
+      color: #3a2c2c;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    #logoutBtn:hover {
+      background-color: #e0b124;
+      transform: scale(1.05);
+    }
+
+    #welcomeMsg {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-right: 1rem;
+    }
+  </style>
+</head>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hubspot Coffee - Our Products</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body class="bg-primary text-text flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-secondary p-4 shadow-md">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-accent flex items-center">
+                <img src="assets/logo.jpeg" alt="Hubspot Coffee Logo" class="h-10 rounded-full mr-2">
+                <span class="text-white font-bold px-4 hover:text-accent">Hubspot Coffee</span>
+            </a>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-accent">Home</a></li>
+                <li><a href="features.html" class="hover:text-accent">Features</a></li>
+                <li><a href="products.html" class="hover:text-accent">Products</a></li>
+                <li><a href="contact.html" class="hover:text-accent">Contact Us</a></li>
+                 <li id="welcomeMsg"></li>
+                <li><button id="logoutBtn">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto py-16 px-4 flex flex-col lg:flex-row gap-8">
+        <!-- Product List Section -->
+        <section class="lg:w-3/4 w-full">
+            <h1 class="text-5xl font-bold text-center mb-12">Explore Our Delicious Offerings</h1>
+            
+            <!-- Search Bar -->
+            <div class="mb-8 flex justify-center">
+                <input type="text" id="productSearch" placeholder="Search for coffee or pastry..." class="w-full max-w-md p-3 rounded-lg bg-secondary text-text border border-gray-600 focus:outline-none focus:border-accent">
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product cards will be dynamically inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Shopping Cart Section -->
+        <aside class="lg:w-1/4 w-full bg-secondary p-6 rounded-lg shadow-lg sticky top-4 h-fit">
+            <h2 class="text-3xl font-bold mb-6 text-center">Your Cart</h2>
+            <div id="cartItems" class="mb-6 space-y-4">
+                <!-- Cart items will be dynamically inserted here -->
+                <p id="emptyCartMessage" class="text-center text-gray-400">Your cart is empty.</p>
+            </div>
+            <div id="cartSummary" class="border-t border-gray-600 pt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xl font-semibold">Total:</span>
+                    <span id="cartTotal" class="text-xl font-bold text-accent">₱0.00</span>
+                </div>
+                <button id="availServiceBtn" class="w-full bg-accent text-primary px-6 py-3 rounded-full text-lg font-semibold hover:bg-yellow-500 transition duration-300" disabled>
+                    Avail Service
+                </button>
+            </div>
+            <div id="purchaseMessage" class="mt-4 p-3 bg-green-600 text-white rounded-lg text-center hidden">
+                Purchase successful! Thank you for your order.
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary p-8 text-center text-text mt-auto">
+        <p>&copy; 2025 Hubspot Coffee. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "Java Chip",
+                image: "assets/coffee1.png",
+                price: 120.00,
+                description: "A rich blend of coffee, chocolate chips, and milk, topped with ice cream",
+                category: "coffee",
+                flavor_notes: "Rich chocolate, coffee, sweet, crunchy",
+                size: "Regular Large, ",
+                rating: 0
+            },
+            {
+                id: 2,
+                name: "Chocolate Cream",
+                image: "assets/coffee2.png",
+                price: 180.00,
+                description: "A decadent blend of rich chocolate and creamy milk, finished with a vanilla ice scream on top..",
+                category: "coffee",
+                flavor_notes: "Creamy, balanced, sweet, chocolatey",
+                size: "Regular, Large",
+                rating: 0
+            },
+            {
+                id: 3,
+                name: "Double Strawberry",
+                image: "assets/coffee3.png",
+                price: 170.00,
+                description: "A refreshing blend of real strawberries and creamy milk for a sweet, fruity treat.",
+                category: "coffee",
+                flavor_notes: "Fruity, sweet, creamy",
+                size: "Regular, Large",
+                rating: 0
+            },
+            {
+                id: 4,
+                name: "Chocolate Chip Cream",
+                image: "assets/coffee4.png",
+                price: 150.00,
+                description: "A delightful blend of chocolate chips and creamy milk, perfect for chocolate lovers.",
+                category: "coffee",
+                flavor_notes: "Sweet, chocolatey, creamy",
+                size: "Regular, Large",
+                rating: 0
+            },
+            {
+                id: 5,
+                name: "Cookies and Cream",
+                image: "assets/coffee5.png",
+                price: 200.00,
+                description: "A delicious blend of cookies and creamy milk, topped with whipped cream.",
+                category: "coffee",
+                flavor_notes: "Sweet, creamy, crunchy",
+                size: "Regular, Large",
+                rating: 0
+            },
+            {
+                id: 6,
+                name: "Cereal Latte",
+                image: "assets/cereal.png",
+                price: 90.00,
+                description: "A comforting blend of warm milk and your favorite cereal, topped with a sprinkle of cinnamon.",
+                category: "non-coffee",
+                flavor_notes: "Sweet, creamy, nostalgic",
+                size: "Regular, Large",
+                rating: 0
+            },
+            {
+                id: 7,
+                name: "Spanish Latte",
+                image: "assets/combo.png",
+                price: 160.00,
+                description: "Soft and moist muffin bursting with blueberries.",
+                category: "pastry",
+                flavor_notes: "Sweet, fruity, moist",
+                size: "Standard",
+                rating: 0
+            },
+            {
+                id: 8,
+                name: "White Choco Cereal Drink",
+                image: "assets/cereal.png",
+                price: 120.00,
+                description: "A delightful blend of white chocolate and cereal-infused milk, topped with whipped cream.",
+                category: "non-coffee",
+                flavor_notes: "Sweet, creamy, crunchy",
+                size: "Regular, Large",
+                rating: 0
+            },
+            {
+                id: 9,
+                name: "Green Apple",
+                image: "assets/combo.png",
+                price: 150.00,
+                description: "A refreshing iced coffee infused with the crisp flavor of green apple, perfect for a hot day.",
+                category: "coffee",
+                flavor_notes: "Fruity, crisp, refreshing",
+                size: "Regular, Large",
+                rating: 0
+            },
+            {
+                id: 10,
+                name: "Tiramisu Oat",
+                image: "assets/oat.png",
+                price: 220.00,
+                description: "A creamy blend of espresso, mascarpone, and oat milk, topped with cocoa powder.",
+                category: "coffee",
+                flavor_notes: "Creamy, coffee, cocoa",
+                size: "Regular, Large",
+                rating: 0
+            },
+            {
+                id: 11,
+                name: "Vanilla Oat",
+                image: "assets/oat.png",
+                price: 210.00,
+                description: "A smooth blend of vanilla syrup and oat milk, perfect for a cozy treat.",
+                category: "coffee",
+                flavor_notes: "Sweet, creamy, vanilla",
+                size: "Regular, Large",
+                rating: 0
+            },
+        ];
+
+        let cart = [];
+
+        const productListDiv = document.getElementById('productList');
+        const productSearchInput = document.getElementById('productSearch');
+        const cartItemsDiv = document.getElementById('cartItems');
+        const cartTotalSpan = document.getElementById('cartTotal');
+        const emptyCartMessage = document.getElementById('emptyCartMessage');
+        const availServiceBtn = document.getElementById('availServiceBtn');
+        const purchaseMessageDiv = document.getElementById('purchaseMessage');
+
+        function renderProducts(filteredProducts) {
+            productListDiv.innerHTML = '';
+            let delay = 0; // Initialize delay
+            filteredProducts.forEach(product => {
+                const productCard = `
+                    <div class="bg-secondary p-6 rounded-lg shadow-lg flex flex-col" data-aos="fade-up" data-aos-delay="${delay}">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-100 object-contain rounded-md mb-4 bg-primary">
+                        <h3 class="text-2xl font-semibold mb-2">${product.name}</h3>
+                        <p class="text-accent text-xl font-bold mb-2">₱${product.price.toFixed(2)}</p>
+                        <p class="text-text text-sm mb-4 flex-grow">${product.description}</p>
+                        ${product.size ? `<p class="text-sm mb-2"><strong>Size:</strong> ${product.size}</p>` : ''}
+                        ${product.flavor_notes ? `<p class="text-sm mb-4"><strong>Flavor:</strong> ${product.flavor_notes}</p>` : ''}
+                        
+                        <!-- Unique Rating System: Stars -->
+                        <div class="mb-4">
+                            <p class="text-sm font-semibold mb-2">Ratings:</p>
+                            <div class="flex space-x-1" data-product-id="${product.id}">
+                                ${[1, 2, 3, 4, 5].map(level => `
+                                    <span class="flavor-level cursor-pointer text-gray-500 text-3xl"
+                                          data-level="${level}"
+                                          title="${level} out of 5 stars">
+                                        &#9733;
+                                    </span>
+                                `).join('')}
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">Click a star to rate</p>
+                        </div>
+
+                        <button class="add-to-cart-btn bg-accent text-primary px-6 py-2 rounded-full text-lg font-semibold hover:bg-yellow-500 transition duration-300 mt-auto"
+                                data-product-id="${product.id}">
+                            Add to Cart
+                        </button>
+                    </div>
+                `;
+                productListDiv.innerHTML += productCard;
+                delay += 50; // Increment delay for the next card
+            });
+            addEventListeners();
+            AOS.refresh();
+        }
+
+        function renderCart() {
+            cartItemsDiv.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                availServiceBtn.disabled = true;
+            } else {
+                emptyCartMessage.classList.add('hidden');
+                availServiceBtn.disabled = false;
+                cart.forEach(item => {
+                    const cartItemElement = `
+                        <div class="flex justify-between items-center bg-primary p-3 rounded-lg">
+                            <div>
+                                <p class="font-semibold">${item.name}</p>
+                                <p class="text-sm text-gray-400">₱${item.price.toFixed(2)} x ${item.quantity}</p>
+                            </div>
+                            <span class="font-bold">₱${(item.price * item.quantity).toFixed(2)}</span>
+                        </div>
+                    `;
+                    cartItemsDiv.innerHTML += cartItemElement;
+                    total += item.price * item.quantity;
+                });
+            }
+            cartTotalSpan.textContent = `₱${total.toFixed(2)}`;
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id == productId);
+            const existingItem = cart.find(item => item.id == productId);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            renderCart();
+            // Hide purchase message if it was visible
+            purchaseMessageDiv.classList.add('hidden');
+        }
+
+        function addEventListeners() {
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.onclick = (event) => {
+                    const productId = event.target.dataset.productId;
+                    addToCart(productId);
+                };
+            });
+
+            document.querySelectorAll('.flavor-level').forEach(star => {
+                star.onclick = (event) => {
+                    const productId = event.target.closest('[data-product-id]').dataset.productId;
+                    const level = parseInt(event.target.dataset.level);
+                    const product = products.find(p => p.id == productId);
+                    product.rating = level; // Update product rating
+
+                    // Update visual representation
+                    const starsContainer = event.target.closest('div');
+                    starsContainer.querySelectorAll('.flavor-level').forEach(s => {
+                        if (parseInt(s.dataset.level) <= level) {
+                            s.classList.remove('text-gray-500');
+                            s.classList.add('text-accent');
+                        } else {
+                            s.classList.remove('text-accent');
+                            s.classList.add('text-gray-500');
+                        }
+                    });
+                    console.log(`Product ${product.name} rated with stars: ${level}`);
+                };
+            });
+        }
+
+        productSearchInput.addEventListener('keyup', (event) => {
+            const searchTerm = event.target.value.toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) ||
+                product.description.toLowerCase().includes(searchTerm) ||
+                (product.flavor_notes && product.flavor_notes.toLowerCase().includes(searchTerm)) ||
+                product.category.toLowerCase().includes(searchTerm)
+            );
+            renderProducts(filteredProducts);
+        });
+
+        availServiceBtn.addEventListener('click', () => {
+            if (cart.length > 0) {
+                cart = []; // Clear the cart
+                renderCart(); // Update cart UI
+                purchaseMessageDiv.classList.remove('hidden'); // Show success message
+                setTimeout(() => {
+                    purchaseMessageDiv.classList.add('hidden'); // Hide message after a few seconds
+                }, 3000);
+            } else {
+                alert("Your cart is empty. Please add items before availing service.");
+            }
+        });
+
+        // Initial render
+        renderProducts(products);
+        renderCart(); // Initial render of the cart
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+</body>
+</html>
+ <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // 🔒 Login check
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const username = localStorage.getItem("username");
+
+    if (isLoggedIn !== "true") {
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("welcomeMsg").textContent = `Welcome, ${username} ☕`;
+    }
+
+    // 🚪 Logout
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("username");
+      window.location.href = "login.html";
+    });
+  </script><style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Added styles for Logout Button */
+    #logoutBtn {
+      background-color: #f4c430;
+      color: #3a2c2c;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    #logoutBtn:hover {
+      background-color: #e0b124;
+      transform: scale(1.05);
+    }
+
+    #welcomeMsg {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-right: 1rem;
+    }
+  </style>
+</head>
+</body>
+</html>

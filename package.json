@@ -1,0 +1,16 @@
+{
+  "name": "hubspot-coffee-website",
+  "version": "1.0.0",
+  "description": "Website for Hubspot Coffee",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "npx tailwindcss build src/style.css -o style.css",
+    "watch:css": "tailwindcss build src/style.css -o public/style.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.0.0"
+  }
+}
