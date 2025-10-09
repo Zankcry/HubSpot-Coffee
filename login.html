@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | HubSpot Coffee</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body class="flex justify-center items-center h-screen font-poppins" style="background-image: linear-gradient(rgba(27, 27, 27, 0.8), rgba(27, 27, 27, 0.8)), url('assets/bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div class="bg-secondary p-8 shadow-lg w-[500px] text-center text-text" data-aos="fade-up" style="border-radius: 1.5rem;">
+    <img src="assets/logo.jpeg" alt="Hubspot Coffee Logo" class="h-10 rounded-full mx-auto mb-4">
+    <h2 class="mb-8 text-2xl font-bold text-accent" data-aos="fade-up" data-aos-delay="100">HubSpot Coffee Login</h2>
+    <input type="text" id="username" placeholder="Enter Username" class="w-full p-3 my-3 border border-gray-600 bg-primary text-text focus:outline-none focus:border-accent mb-2" data-aos="fade-up" data-aos-delay="200" style="border-radius: 0.75rem;" />
+    <input type="password" id="password" placeholder="Enter Password" class="w-full p-3 my-3 border border-gray-600 bg-primary text-text focus:outline-none focus:border-accent" data-aos="fade-up" data-aos-delay="300" style="border-radius: 0.75rem;" />
+    <button onclick="login()" class="w-full p-3 mt-6 bg-accent text-primary font-bold cursor-pointer hover:bg-yellow-500 transition duration-300" data-aos="fade-up" data-aos-delay="400" style="border-radius: 0.75rem;">Login</button>
+    <p class="text-red-500 text-sm mt-4" id="error-message"></p>
+  </div>
+
+  <script src="login.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

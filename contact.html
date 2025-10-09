@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
-<body class="text-text flex flex-col min-h-screen" style="background-image: linear-gradient(rgba(27, 27, 27, 0.5), rgba(27, 27, 27, 0.5)), url('assets/contact.png'); background-size: cover; background-position: center; background-attachment: fixed;">
+<body class="text-text flex flex-col min-h-screen bg-cover bg-center bg-fixed" style="background-image: linear-gradient(rgba(27, 27, 27, 0.5), rgba(27, 27, 27, 0.5)), url('assets/contact.png');">
     <!-- Header -->
     <header class="bg-secondary p-4 shadow-md">
         <nav class="container mx-auto flex justify-between items-center">
@@ -16,11 +16,13 @@
                 <img src="assets/logo.jpeg" alt="Hubspot Coffee Logo" class="h-10 rounded-full mr-2">
                 <span class="text-white font-bold px-4 hover:text-accent">Hubspot Coffee</span>
             </a>
-            <ul class="flex space-x-6">
+            <ul class="flex space-x-6 items-center">
                 <li><a href="index.html" class="hover:text-accent">Home</a></li>
                 <li><a href="features.html" class="hover:text-accent">Features</a></li>
                 <li><a href="products.html" class="hover:text-accent">Products</a></li>
                 <li><a href="contact.html" class="hover:text-accent">Contact Us</a></li>
+                <li id="welcomeMsg" class="text-white font-semibold text-base mr-4"></li>
+                <li><button id="logoutBtn" class="bg-[#f4c430] text-[#3a2c2c] border-none py-2 px-4 rounded-md cursor-pointer font-semibold transition duration-300 ease-in-out hover:bg-[#e0b124] hover:scale-105">Logout</button></li>
             </ul>
         </nav>
     </header>
@@ -113,5 +115,28 @@
             }, 5000);
         });
     </script>
+</body>
+</html>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // 🔒 Login check
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const username = localStorage.getItem("username");
+
+    if (isLoggedIn !== "true") {
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("welcomeMsg").textContent = `Welcome, ${username} ☕`;
+    }
+
+    // 🚪 Logout
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("username");
+      window.location.href = "login.html";
+    });
+  </script>
 </body>
 </html>
