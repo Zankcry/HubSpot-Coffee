@@ -4,6 +4,8 @@
 
 Website: https://zankcry.github.io/HubSpot-Coffee/
 
-Access Website:
-username: "coffeeLover",
-password: "brew123"
+To access the website, you need to log in with the following credentials:
+
+- Username: coffeeLover
+
+- Password: brew123
