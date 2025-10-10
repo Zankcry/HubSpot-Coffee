@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hubspot Coffee - Customer Messages</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body class="bg-primary text-text flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-secondary p-4 shadow-md">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-accent flex items-center">
+                <img src="assets/logo.jpeg" alt="Hubspot Coffee Logo" class="h-10 rounded-full mr-2">
+                <span class="text-white font-bold px-4 hover:text-accent">Hubspot Coffee</span>
+            </a>
+            <ul class="flex space-x-6 items-center">
+                <li><a href="index.html" class="hover:text-accent">Home</a></li>
+                <li><a href="features.html" class="hover:text-accent">Features</a></li>
+                <li><a href="products.html" class="hover:text-accent">Products</a></li>
+                <li><a href="contact.html" class="hover:text-accent">Contact Us</a></li>
+                <li><a href="customers.html" class="hover:text-accent">Customer List</a></li>
+                <li><a href="messages.html" class="hover:text-accent">Customer Messages</a></li>
+                 <li id="welcomeMsg" class="text-white font-semibold text-base mr-4"></li>
+                <li><button id="logoutBtn" class="bg-[#f4c430] text-[#3a2c2c] border-none py-2 px-4 rounded-md cursor-pointer font-semibold transition duration-300 ease-in-out hover:bg-[#e0b124] hover:scale-105">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto py-16 px-4">
+        <h1 class="text-5xl font-bold text-center mb-12">Customer Messages</h1>
+        
+        <!-- Search Bar -->
+        <div class="mb-8 flex justify-center">
+            <input type="text" id="messageSearch" placeholder="Search for messages..." class="w-full max-w-md p-3 rounded-lg bg-secondary text-text border border-gray-600 focus:outline-none focus:border-accent">
+        </div>
+
+        <!-- Message List -->
+        <div id="messageList" class="space-y-8 mx-auto w-full">
+            <!-- Message cards will be dynamically inserted here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary p-8 text-center text-text mt-auto">
+        <p>&copy; 2025 Hubspot Coffee. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let messages = [];
+
+        fetch('http://localhost:3000/messages')
+            .then(response => response.json())
+            .then(data => {
+                messages = data;
+                renderMessages(messages);
+            });
+
+        const messageSearchInput = document.getElementById('messageSearch');
+        const messageListDiv = document.getElementById('messageList');
+
+        function renderMessages(filteredMessages) {
+            messageListDiv.innerHTML = '';
+            filteredMessages.forEach(message => {
+                const messageCard = `
+                    <div class="bg-secondary p-6 rounded-lg shadow-lg mb-4">
+                        <h3 class="text-2xl font-semibold mb-2">${message.name}</h3>
+                        <p class="text-accent text-lg mb-2">${message.email}</p>
+                        <p class="text-text">${message.message}</p>
+                    </div>
+                `;
+                messageListDiv.innerHTML += messageCard;
+            });
+        }
+
+        messageSearchInput.addEventListener('keyup', (event) => {
+            const searchTerm = event.target.value.toLowerCase();
+            const filteredMessages = messages.filter(message => 
+                message.name.toLowerCase().includes(searchTerm) ||
+                message.email.toLowerCase().includes(searchTerm) ||
+                message.message.toLowerCase().includes(searchTerm)
+            );
+            renderMessages(filteredMessages);
+        });
+
+        // Initial render
+        renderMessages(messages);
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // 🔒 Login check
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const username = localStorage.getItem("username");
+
+    if (isLoggedIn !== "true") {
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("welcomeMsg").textContent = `Welcome, ${username} ☕`;
+    }
+
+    // 🚪 Logout
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("username");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

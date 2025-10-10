@@ -1,0 +1,169 @@
+
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Java Chip",
+      "image": "assets/coffee1.png",
+      "price": 120.00,
+      "description": "A rich blend of coffee, chocolate chips, and milk, topped with ice cream",
+      "category": "coffee",
+      "flavor_notes": "Rich chocolate, coffee, sweet, crunchy",
+      "size": "Regular Large, ",
+      "rating": 0
+    },
+    {
+      "id": 2,
+      "name": "Chocolate Cream",
+      "image": "assets/coffee2.png",
+      "price": 180.00,
+      "description": "A decadent blend of rich chocolate and creamy milk, finished with a vanilla ice scream on top..",
+      "category": "coffee",
+      "flavor_notes": "Creamy, balanced, sweet, chocolatey",
+      "size": "Regular, Large",
+      "rating": 0
+    },
+    {
+      "id": 3,
+      "name": "Double Strawberry",
+      "image": "assets/coffee3.png",
+      "price": 170.00,
+      "description": "A refreshing blend of real strawberries and creamy milk for a sweet, fruity treat.",
+      "category": "coffee",
+      "flavor_notes": "Fruity, sweet, creamy",
+      "size": "Regular, Large",
+      "rating": 0
+    },
+    {
+      "id": 4,
+      "name": "Chocolate Chip Cream",
+      "image": "assets/coffee4.png",
+      "price": 150.00,
+      "description": "A delightful blend of chocolate chips and creamy milk, perfect for chocolate lovers.",
+      "category": "coffee",
+      "flavor_notes": "Sweet, chocolatey, creamy",
+      "size": "Regular, Large",
+      "rating": 0
+    },
+    {
+      "id": 5,
+      "name": "Cookies and Cream",
+      "image": "assets/coffee5.png",
+      "price": 200.00,
+      "description": "A delicious blend of cookies and creamy milk, topped with whipped cream.",
+      "category": "coffee",
+      "flavor_notes": "Sweet, creamy, crunchy",
+      "size": "Regular, Large",
+      "rating": 0
+    },
+    {
+      "id": 6,
+      "name": "Cereal Latte",
+      "image": "assets/cereal.png",
+      "price": 90.00,
+      "description": "A comforting blend of warm milk and your favorite cereal, topped with a sprinkle of cinnamon.",
+      "category": "non-coffee",
+      "flavor_notes": "Sweet, creamy, nostalgic",
+      "size": "Regular, Large",
+      "rating": 0
+    },
+    {
+      "id": 7,
+      "name": "Spanish Latte",
+      "image": "assets/combo.png",
+      "price": 160.00,
+      "description": "Soft and moist muffin bursting with blueberries.",
+      "category": "pastry",
+      "flavor_notes": "Sweet, fruity, moist",
+      "size": "Standard",
+      "rating": 0
+    },
+    {
+      "id": 8,
+      "name": "White Choco Cereal Drink",
+      "image": "assets/cereal.png",
+      "price": 120.00,
+      "description": "A delightful blend of white chocolate and cereal-infused milk, topped with whipped cream.",
+      "category": "non-coffee",
+      "flavor_notes": "Sweet, creamy, crunchy",
+      "size": "Regular, Large",
+      "rating": 0
+    },
+    {
+      "id": 9,
+      "name": "Green Apple",
+      "image": "assets/combo.png",
+      "price": 150.00,
+      "description": "A refreshing iced coffee infused with the crisp flavor of green apple, perfect for a hot day.",
+      "category": "coffee",
+      "flavor_notes": "Fruity, crisp, refreshing",
+      "size": "Regular, Large",
+      "rating": 0
+    },
+    {
+      "id": 10,
+      "name": "Tiramisu Oat",
+      "image": "assets/oat.png",
+      "price": 220.00,
+      "description": "A creamy blend of espresso, mascarpone, and oat milk, topped with cocoa powder.",
+      "category": "coffee",
+      "flavor_notes": "Creamy, coffee, cocoa",
+      "size": "Regular, Large",
+      "rating": 0
+    },
+    {
+      "id": 11,
+      "name": "Vanilla Oat",
+      "image": "assets/oat.png",
+      "price": 210.00,
+      "description": "A smooth blend of vanilla syrup and oat milk, perfect for a cozy treat.",
+      "category": "coffee",
+      "flavor_notes": "Sweet, creamy, vanilla",
+      "size": "Regular, Large",
+      "rating": 0
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "phone": "123-456-7890",
+      "address": "123 Main St, Anytown, USA"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "phone": "098-765-4321",
+      "address": "456 Oak Ave, Anytown, USA"
+    },
+    {
+      "id": 3,
+      "name": "Alice Johnson",
+      "email": "alice.j@example.com",
+      "phone": "555-123-4567",
+      "address": "789 Pine Ln, Anytown, USA"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "name": "Peter Jones",
+      "email": "peter.jones@example.com",
+      "message": "I love your coffee!"
+    },
+    {
+      "id": 2,
+      "name": "Mary Williams",
+      "email": "mary.williams@example.com",
+      "message": "What are your hours?"
+    },
+    {
+      "id": 3,
+      "name": "David Brown",
+      "email": "david.b@example.com",
+      "message": "Can I order online?"
+    }
+  ]
+}
