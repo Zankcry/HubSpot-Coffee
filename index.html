@@ -101,6 +101,42 @@
       <p class="text-lg mb-4">Email: coffeehubspot@gmail.com</p>
       <p class="text-lg">Phone: (123) 456-7890</p>
     </div>
+    <div id="map" style="height: 500px; width: 100%;"></div>
+
+<script>
+  function initMap() {
+    // 📍 Hubspot Coffee coordinates (in front of Holy Angel University)
+    const hubspot = { lat: 15.13438, lng: 120.59136 };
+
+    // Initialize Google Map centered at Hubspot Coffee
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 18,
+      center: hubspot,
+    });
+
+    // Add a marker (pin) for Hubspot Coffee
+    const marker = new google.maps.Marker({
+      position: hubspot,
+      map: map,
+      title: "Hubspot Coffee",
+    });
+
+    // Add an info window (popup when clicked)
+    const infoWindow = new google.maps.InfoWindow({
+      content: "<b>Hubspot Coffee</b><br>In front of Holy Angel University, Angeles City.",
+    });
+
+    // Open popup when clicking the pin
+    marker.addListener("click", () => {
+      infoWindow.open(map, marker);
+    });
+  }
+</script>
+
+
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0gdLCR1IUkQAracWaQM-e6l_m-wD5DW8&callback=initMap">
+</script>
   </section>
 
   <!-- Footer -->
