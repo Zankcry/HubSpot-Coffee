@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "build": "npm run build:css",
     "build:css": "npx tailwindcss build src/style.css -o style.css",
     "watch:css": "tailwindcss build src/style.css -o public/style.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "tailwindcss": "^3.0.0",
+  "dependencies": {
     "json-server": "^0.17.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.0"
   }
 }
