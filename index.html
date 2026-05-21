@@ -14,12 +14,15 @@
     #map {
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-      filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(95%);
     }
     .leaflet-popup-content-wrapper, .leaflet-popup-tip {
       background: #1b1b1b !important;
       color: #fff !important;
       border: 1px solid #f4c430 !important;
+    }
+    /* Style default blue Leaflet pin to premium brand gold/yellow */
+    .leaflet-marker-icon {
+      filter: hue-rotate(200deg) saturate(2) brightness(1.2);
     }
   </style>
 </head>
@@ -127,10 +130,10 @@
       scrollWheelZoom: false
     }).setView(hubspot, 18);
 
-    // Add OpenStreetMap tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    // Add CartoDB Dark Matter tiles (beautifully dark, desaturated & premium)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 20,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
     }).addTo(map);
 
     // Add marker
