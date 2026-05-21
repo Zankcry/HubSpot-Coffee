@@ -1,5 +1,3 @@
-const db = require('./db.json');
-
 module.exports = (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
@@ -9,5 +7,14 @@ module.exports = (req, res) => {
     return res.status(200).end();
   }
 
-  return res.status(200).json(db.customers);
+  try {
+    const db = require('./db.json');
+    return res.status(200).json(db.customers);
+  } catch (error) {
+    return res.status(500).json({
+      error: "Error loading db.json",
+      message: error.message,
+      stack: error.stack
+    });
+  }
 };
