@@ -9,6 +9,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <style>
+    #map {
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(95%);
+    }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+      background: #1b1b1b !important;
+      color: #fff !important;
+      border: 1px solid #f4c430 !important;
+    }
+  </style>
 </head>
 
 <body class="bg-primary text-text">
@@ -101,41 +114,31 @@
       <p class="text-lg mb-4">Email: coffeehubspot@gmail.com</p>
       <p class="text-lg">Phone: (123) 456-7890</p>
     </div>
-    <div id="map" style="height: 500px; width: 75%; margin: 2rem auto;"></div>
+    <div id="map" style="height: 500px; width: 75%; margin: 2rem auto; z-index: 1;"></div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-  function initMap() {
+  document.addEventListener("DOMContentLoaded", function() {
     // 📍 Hubspot Coffee coordinates (in front of Holy Angel University)
-    const hubspot = { lat: 15.13438, lng: 120.59136 };
+    const hubspot = [15.13438, 120.59136];
 
-    // Initialize Google Map centered at Hubspot Coffee
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 18,
-      center: hubspot,
-    });
+    // Initialize Leaflet Map centered at Hubspot Coffee
+    const map = L.map('map', {
+      scrollWheelZoom: false
+    }).setView(hubspot, 18);
 
-    // Add a marker (pin) for Hubspot Coffee
-    const marker = new google.maps.Marker({
-      position: hubspot,
-      map: map,
-      title: "Hubspot Coffee",
-    });
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-    // Add an info window (popup when clicked)
-    const infoWindow = new google.maps.InfoWindow({
-      content: "<b>Hubspot Coffee</b><br>In front of Holy Angel University, Angeles City.",
-    });
+    // Add marker
+    const marker = L.marker(hubspot).addTo(map);
 
-    // Open popup when clicking the pin
-    marker.addListener("click", () => {
-      infoWindow.open(map, marker);
-    });
-  }
-</script>
-
-
-<script async
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0gdLCR1IUkQAracWaQM-e6l_m-wD5DW8&callback=initMap">
+    // Add styled popup
+    marker.bindPopup("<div style='font-family: Poppins, sans-serif;'><b style='color: #f4c430; font-size: 1.1em;'>Hubspot Coffee</b><br><span style='font-size: 0.9em; color: #ddd;'>In front of Holy Angel University, Angeles City.</span></div>").openPopup();
+  });
 </script>
   </section>
 
