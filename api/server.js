@@ -1,5 +1,4 @@
-const path = require('path');
-const fs = require('fs');
+const db = require('../db.json');
 
 module.exports = (req, res) => {
   // Enable CORS
@@ -11,29 +10,33 @@ module.exports = (req, res) => {
     return res.status(200).end();
   }
 
-  // Load the db.json file fresh on each request
-  const dbPath = path.join(__dirname, '../db.json');
-  let db;
-  try {
-    db = JSON.parse(fs.readFileSync(dbPath, 'utf-8'));
-  } catch (e) {
-    return res.status(500).json({ error: 'Failed to load database.' });
+  // Get the original requested path robustly
+  const matchedPath = req.headers['x-matched-path'] || req.headers['x-forwarded-uri'] || req.url || '';
+  const urlPath = matchedPath.split('?')[0]; // strip query strings
+  const cleanPath = urlPath.replace(/^\/api/, '').replace(/^\//, '');
+  const parts = cleanPath.split('/').filter(Boolean);
+
+  // If path is empty or resolved to the serverless function name itself, return api info
+  if (parts.length === 0 || parts[0] === 'server') {
+    return res.status(200).json({
+      message: "HubSpot Coffee API is running!",
+      endpoints: Object.keys(db).map(key => `/api/${key}`)
+    });
   }
 
-  // Extract the resource name from the URL path
-  // e.g. /api/products -> "products", /api/customers -> "customers"
-  const urlPath = req.url.split('?')[0]; // strip query strings
-  const parts = urlPath.replace(/^\/api/, '').replace(/^\//, '').split('/');
   const resource = parts[0];
-  const id = parts[1] ? parseInt(parts[1]) : null;
+  const id = parts[1] ? parseInt(parts[1], 10) : null;
 
-  if (!resource || !db[resource]) {
-    return res.status(404).json({ error: `Resource "${resource}" not found.` });
+  if (!db[resource]) {
+    return res.status(404).json({ 
+      error: `Resource "${resource}" not found.`,
+      endpoints: Object.keys(db).map(key => `/api/${key}`)
+    });
   }
 
-  if (id !== null) {
+  if (id !== null && !isNaN(id)) {
     const item = db[resource].find(r => r.id === id);
-    if (!item) return res.status(404).json({ error: 'Item not found.' });
+    if (!item) return res.status(404).json({ error: `Item with ID ${id} not found.` });
     return res.status(200).json(item);
   }
 
